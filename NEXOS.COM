@@ -1,0 +1,992 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NEXO | Tecnologia, Software e Inovação</title>
+
+  <meta name="description" content="NEXO - Soluções tecnológicas, criação de websites, aplicações, software empresarial, manutenção e inovação digital em Angola.">
+
+  <meta name="theme-color" content="#071426">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #071426;
+      --bg-light: #0c1d34;
+      --card: #10243d;
+      --blue: #1688ff;
+      --cyan: #19d3e6;
+      --purple: #8157ff;
+      --white: #ffffff;
+      --muted: #a8b8ca;
+      --border: rgba(255,255,255,.09);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* NAVEGAÇÃO */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7,20,38,.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      color: white;
+      border: 0;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* BOTÕES */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 23px;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(100deg, var(--blue), var(--cyan));
+      color: #041426;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(22,136,255,.25);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,.2);
+      color: white;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 80% 30%, rgba(22,136,255,.19), transparent 30%),
+        radial-gradient(circle at 15% 80%, rgba(129,87,255,.12), transparent 35%);
+    }
+
+    .hero-content {
+      max-width: 760px;
+      padding: 100px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 14px;
+      border: 1px solid rgba(25,211,230,.35);
+      color: var(--cyan);
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 76px);
+      line-height: 1.08;
+      margin-bottom: 25px;
+      letter-spacing: -3px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--blue), var(--cyan), #a58aff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 610px;
+      font-size: 17px;
+      margin-bottom: 35px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* SECÇÕES */
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading small {
+      color: var(--cyan);
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(30px, 4vw, 45px);
+      line-height: 1.2;
+      margin: 12px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* SOBRE */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .about-visual {
+      min-height: 330px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle, rgba(25,211,230,.14), transparent 55%),
+        var(--bg-light);
+      text-align: center;
+      padding: 30px;
+    }
+
+    .nexo-symbol {
+      font-size: 100px;
+      font-weight: 900;
+      color: var(--cyan);
+      text-shadow: 0 0 35px rgba(25,211,230,.35);
+    }
+
+    .about-visual p {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* SERVIÇOS */
+
+    .services {
+      background: var(--bg-light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--card);
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: .3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(25,211,230,.5);
+    }
+
+    .service-icon {
+      width: 55px;
+      height: 55px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(22,136,255,.15);
+      color: var(--cyan);
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 12px;
+      font-size: 19px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* MISSÃO E VALORES */
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .value-card {
+      padding: 28px;
+      border-left: 3px solid var(--cyan);
+      background: rgba(255,255,255,.035);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .value-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .value-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* PROCESSO */
+
+    .process {
+      background: var(--bg-light);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .process-card {
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .process-number {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--cyan);
+      margin-bottom: 10px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* CONTACTO */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 45px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin: 15px 0;
+    }
+
+    .contact-detail {
+      margin-top: 20px;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .contact-form {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      background: #071426;
+      color: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--cyan);
+    }
+
+    .contact-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      width: 100%;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+      background: #040d19;
+      border-top: 1px solid var(--border);
+      padding: 35px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    footer p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* WHATSAPP */
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 999;
+      background: #20c66b;
+      color: white;
+      padding: 14px 19px;
+      border-radius: 40px;
+      font-weight: 800;
+      box-shadow: 0 8px 25px rgba(0,0,0,.3);
+      transition: .3s;
+    }
+
+    .whatsapp:hover {
+      transform: translateY(-4px);
+    }
+
+    /* ANIMAÇÃO */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVIDADE */
+
+    @media (max-width: 850px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        background: #071426;
+        padding: 25px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 550px) {
+      section {
+        padding: 70px 0;
+      }
+
+      .services-grid,
+      .values-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-content {
+        padding: 80px 0;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CABEÇALHO -->
+
+  <header>
+    <div class="container navbar">
+      <a href="#inicio" class="logo">NEX<span>O</span></a>
+
+      <button class="menu-btn" id="menuBtn"
+        aria-label="Abrir menu"
+        aria-expanded="false">☰</button>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre nós</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#valores">Valores</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- INÍCIO -->
+
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content reveal">
+
+          <span class="tag">TECNOLOGIA • SOFTWARE • INOVAÇÃO</span>
+
+          <h1>
+            Conectamos ideias.
+            <span>Criamos soluções.</span>
+          </h1>
+
+          <p>
+            A NEXO transforma ideias em soluções tecnológicas.
+            Desenvolvemos websites, aplicações e sistemas digitais
+            para aproximar pessoas, empresas e oportunidades.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#servicos" class="btn btn-primary">
+              Explorar serviços
+            </a>
+
+            <a href="#contacto" class="btn btn-outline">
+              Falar connosco
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+
+    <section id="sobre">
+      <div class="container about-grid">
+
+        <div class="about-text reveal">
+          <div class="section-heading">
+            <small>Quem somos</small>
+            <h2>O futuro começa com uma conexão.</h2>
+          </div>
+
+          <p>
+            A NEXO é uma marca dedicada à tecnologia, ao desenvolvimento
+            de software e à inovação digital.
+          </p>
+
+          <p>
+            Trabalhamos para transformar necessidades em soluções
+            práticas, modernas e funcionais, ajudando pessoas e
+            organizações a aproveitar melhor as oportunidades
+            do mundo digital.
+          </p>
+
+          <p>
+            Acreditamos que a tecnologia deve simplificar processos,
+            aproximar pessoas e abrir novos caminhos.
+          </p>
+
+          <a href="#contacto" class="btn btn-primary">
+            Conhecer a NEXO
+          </a>
+        </div>
+
+        <div class="about-visual reveal">
+          <div>
+            <div class="nexo-symbol">N</div>
+            <p>TECNOLOGIA QUE CONECTA</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+
+    <section class="services" id="servicos">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <small>O que fazemos</small>
+          <h2>Soluções para um mundo digital.</h2>
+          <p>
+            Serviços tecnológicos pensados para transformar
+            ideias em resultados.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card reveal">
+            <div class="service-icon">⌘</div>
+            <h3>Desenvolvimento Web</h3>
+            <p>
+              Criação de websites modernos, responsivos,
+              institucionais e páginas profissionais.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">▣</div>
+            <h3>Aplicações</h3>
+            <p>
+              Desenvolvimento de aplicações digitais
+              para diferentes necessidades e plataformas.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">⌨</div>
+            <h3>Software Empresarial</h3>
+            <p>
+              Sistemas para organização, gestão,
+              produtividade e automatização de processos.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">⚙</div>
+            <h3>Instalação e Configuração</h3>
+            <p>
+              Instalação, configuração e apoio técnico
+              em equipamentos e programas informáticos.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">✦</div>
+            <h3>Marketing Digital</h3>
+            <p>
+              Presença digital, divulgação de marcas
+              e comunicação através de plataformas online.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">⌁</div>
+            <h3>Manutenção Tecnológica</h3>
+            <p>
+              Diagnóstico, manutenção e suporte
+              para equipamentos e soluções digitais.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSÃO, VISÃO E VALORES -->
+
+    <section id="valores">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <small>A nossa identidade</small>
+          <h2>O que nos orienta.</h2>
+          <p>
+            Princípios que definem a forma como pensamos,
+            trabalhamos e criamos soluções.
+          </p>
+        </div>
+
+        <div class="values-grid">
+
+          <article class="value-card reveal">
+            <h3>Missão</h3>
+            <p>
+              Criar soluções tecnológicas acessíveis,
+              funcionais e inovadoras que respondam
+              às necessidades dos nossos clientes.
+            </p>
+          </article>
+
+          <article class="value-card reveal">
+            <h3>Visão</h3>
+            <p>
+              Ser uma referência em soluções digitais,
+              contribuindo para o desenvolvimento
+              tecnológico e a transformação digital.
+            </p>
+          </article>
+
+          <article class="value-card reveal">
+            <h3>Valores</h3>
+            <p>
+              Inovação, responsabilidade, criatividade,
+              qualidade, transparência e compromisso.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESSO -->
+
+    <section class="process">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <small>Como trabalhamos</small>
+          <h2>Da ideia à solução.</h2>
+        </div>
+
+        <div class="process-grid">
+
+          <article class="process-card reveal">
+            <div class="process-number">01</div>
+            <h3>Escutamos</h3>
+            <p>Compreendemos a necessidade e os objetivos do cliente.</p>
+          </article>
+
+          <article class="process-card reveal">
+            <div class="process-number">02</div>
+            <h3>Planeamos</h3>
+            <p>Definimos a melhor abordagem para cada projeto.</p>
+          </article>
+
+          <article class="process-card reveal">
+            <div class="process-number">03</div>
+            <h3>Desenvolvemos</h3>
+            <p>Transformamos o planeamento numa solução funcional.</p>
+          </article>
+
+          <article class="process-card reveal">
+            <div class="process-number">04</div>
+            <h3>Entregamos</h3>
+            <p>Apresentamos o resultado e prestamos apoio.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+
+    <section id="contacto">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <small>Entre em contacto</small>
+          <h2>Vamos criar algo juntos?</h2>
+          <p>
+            Conta-nos a tua ideia. Estamos disponíveis
+            para conversar sobre o teu próximo projeto.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-info reveal">
+            <h3>Fala com a NEXO</h3>
+
+            <p>
+              Tens um projeto, uma dúvida ou precisas
+              de uma solução tecnológica?
+              Envia-nos uma mensagem.
+            </p>
+
+            <div class="contact-detail">
+              WhatsApp: +244 942 227 877
+            </div>
+
+            <p>Angola</p>
+          </div>
+
+          <form class="contact-form reveal" id="contactForm">
+
+            <input
+              type="text"
+              id="nome"
+              placeholder="O teu nome"
+              required
+            >
+
+            <input
+              type="text"
+              id="assunto"
+              placeholder="Assunto"
+              required
+            >
+
+            <textarea
+              id="mensagem"
+              placeholder="Escreve a tua mensagem..."
+              required
+            ></textarea>
+
+            <button type="submit" class="btn btn-primary">
+              Enviar pelo WhatsApp
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+
+  <footer>
+    <div class="container footer-content">
+
+      <a href="#inicio" class="logo">NEX<span>O</span></a>
+
+      <p>
+        © <span id="year"></span> NEXO.
+        Todos os direitos reservados.
+      </p>
+
+      <div class="footer-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- BOTÃO WHATSAPP -->
+
+  <a
+    class="whatsapp"
+    href="https://wa.me/244942227877"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar a NEXO pelo WhatsApp"
+  >
+    WhatsApp
+  </a>
+
+  <script>
+    // MENU PARA TELEMÓVEIS
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const aberto = navLinks.classList.toggle("active");
+      menuBtn.setAttribute("aria-expanded", aberto);
+      menuBtn.textContent = aberto ? "×" : "☰";
+    });
+
+    document.querySelectorAll("#navLinks a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    // FORMULÁRIO DE CONTACTO
+
+    const WHATSAPP_NUMBER = "244942227877";
+
+    document.getElementById("contactForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const nome = document.getElementById("nome").value.trim();
+        const assunto = document.getElementById("assunto").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
+
+        if (!nome || !assunto || !mensagem) {
+          alert("Preenche todos os campos.");
+          return;
+        }
+
+        const texto =
+          "Olá, NEXO!%0A%0A" +
+          "Nome: " + encodeURIComponent(nome) + "%0A" +
+          "Assunto: " + encodeURIComponent(assunto) + "%0A" +
+          "Mensagem: " + encodeURIComponent(mensagem);
+
+        const url = "https://wa.me/" + WHATSAPP_NUMBER +
+          "?text=" + texto;
+
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+
+    // ANIMAÇÕES AO DESCER A PÁGINA
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      observer.observe(element);
+    });
+
+    // ANO AUTOMÁTICO
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
